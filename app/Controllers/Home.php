@@ -19,4 +19,8 @@ class Home extends BaseController
     {
         return view('stats.html');
     }
+    public function inscription(): string
+    {
+        return view('inscription.php');
+    }
 }

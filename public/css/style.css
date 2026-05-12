@@ -239,6 +239,8 @@
       padding: 10px 12px;
       font-size: 0.9rem;
       transition: border-color 0.15s;
+      width: 100%;
+      box-sizing: border-box;
     }
     .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(233,69,96,0.08); }
     .btn-primary-custom {

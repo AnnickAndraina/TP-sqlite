@@ -34,7 +34,7 @@
       </form>
 
       <hr class="auth-divider" />
-      <div class="auth-footer">Pas encore de compte ? <a href="#page-inscription">Créer un compte</a></div>
+      <div class="auth-footer">Pas encore de compte ? <a href="/inscription">Créer un compte</a></div>
     </div>
   </div>
 </section>
