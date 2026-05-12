@@ -16,28 +16,21 @@
       <div class="auth-logo">Fit<span>Space</span></div>
       <div class="auth-subtitle">Bienvenue ! Connectez-vous à votre espace.</div>
 
-      <!-- Flashdata erreur CI4 -->
-      <div class="flash-message flash-error">
-        <i class="bi bi-exclamation-circle-fill"></i>
-        Email ou mot de passe incorrect.
-      </div>
-
       <form method="post">
         <div class="form-group mb-3">
           <label class="form-label" >Adresse email</label>
           <input type="email" id="login-email" class="form-control" placeholder="votre@email.com" />
         </div>
         <div class="form-group mb-4">
-          <label class="form-label" id="login-pwd">Mot de passe</label>
+          <label class="form-label">Mot de passe</label>
           <input type="password" id="login-pwd" class="form-control" placeholder="••••••••" />
         </div>
 
-        <div class="flash-message flash-error" >
-          <i class="bi bi-exclamation-circle-fill" id="login-error"></i>
-          Email ou mot de passe incorrect.
+        <div class="flash-message flash-error" id="login-error" style="display:none;">
+            Email ou mot de passe incorrect.
         </div>
 
-        <button type="submit" class="btn-primary-custom" onclick="doLogin()" >Se connecter</button>
+        <button type="button" class="btn-primary-custom" onclick="doLogin(event)">Se connecter</button>
       </form>
 
       <hr class="auth-divider" />
@@ -48,42 +41,52 @@
 
 
 <script>
-  function doLogin() {
+function doLogin(event) {
     event.preventDefault();
+
     const email = document.getElementById('login-email').value.trim();
     const pwd   = document.getElementById('login-pwd').value;
     const err   = document.getElementById('login-error');
 
+    // Vérification champs
     if (!email || !pwd) {
-      err.textContent = 'Veuillez remplir tous les champs.';
-      err.classList.add('visible');
-      return;
+        err.style.display = 'block';
+        err.textContent = 'Veuillez remplir tous les champs.';
+        return;
     }
 
-    err.classList.remove('visible');
+    err.style.display = 'none';
 
-    // Persist user session
+    // Vérifie utilisateur
     const user = JSON.parse(localStorage.getItem('fs_user') || 'null');
-    if (user && user.email === email && user.pwd === pwd) {
-      localStorage.setItem('fs_logged', 'true');
-      window.location.href = '/home';
-    } else if (!user) {
-      // Demo mode : first login always works
-      localStorage.setItem('fs_user', JSON.stringify({ name: 'Invité', email, pwd }));
-      localStorage.setItem('fs_logged', 'true');
-      window.location.href = '/home';
+
+    // Si aucun utilisateur enregistré
+    if (!user) {
+
+        localStorage.setItem('fs_user', JSON.stringify({
+            name: 'Invité',
+            email: email,
+            pwd: pwd
+        }));
+
+        localStorage.setItem('fs_logged', 'true');
+
+        window.location.href = '/home';
+
     } else {
-      err.textContent = 'Email ou mot de passe incorrect.';
-      err.classList.add('visible');
+
+        // Vérification login
+        if (user.email === email && user.pwd === pwd) {
+
+            localStorage.setItem('fs_logged', 'true');
+
+            window.location.href = '/home';
+
+        } else {
+
+            err.style.display = 'block';
+            err.textContent = 'Email ou mot de passe incorrect.';
+        }
     }
-  }
-
-  // Already logged in → redirect
-  if (localStorage.removeItem('fs_logged');) {
-    window.location.href = '/home';
 }
-// //  document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-// </script>
-
-</body>
-</html>
+</script>
