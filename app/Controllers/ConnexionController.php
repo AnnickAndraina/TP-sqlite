@@ -2,15 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
-
 class ConnexionController extends BaseController
 {
     protected $userModel;
 
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        // Commenté temporairement - base de données non disponible
+        // $this->userModel = new UserModel();
     }
 
     /**
@@ -29,7 +28,19 @@ class ConnexionController extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $user = $this->userModel->authenticate($email, $password);
+        // Données de test - utilisateur TEST
+        $testUsers = [
+            ['id' => 1, 'email' => 'user@test.com', 'name' => 'Test User', 'password' => 'password123'],
+            ['id' => 2, 'email' => 'demo@example.com', 'name' => 'Demo User', 'password' => 'demo123']
+        ];
+
+        $user = null;
+        foreach ($testUsers as $testUser) {
+            if ($testUser['email'] === $email && $testUser['password'] === $password) {
+                $user = $testUser;
+                break;
+            }
+        }
 
         if ($user) {
             $session = session();
@@ -63,18 +74,26 @@ class ConnexionController extends BaseController
         $password = $this->request->getPost('password');
         $name = $this->request->getPost('name');
 
-        // Vérifier que l'email n'existe pas déjà
-        if ($this->userModel->getUserByEmail($email)) {
+        // Données de test - utilisateurs connus
+        $knownUsers = [
+            'user@test.com',
+            'demo@example.com'
+        ];
+
+        if (in_array($email, $knownUsers)) {
             return redirect()->back()->with('error', 'Cet email est déjà utilisé');
         }
 
-        $this->userModel->registerUser([
+        // Simuler l'inscription en créant une session
+        $session = session();
+        $session->set([
+            'user_id' => rand(100, 999),
             'email' => $email,
-            'password' => $password,
-            'name' => $name
+            'name' => $name,
+            'logged_in' => true
         ]);
 
-        return redirect()->to('/connexion/login')->with('success', 'Inscription réussie, veuillez vous connecter');
+        return redirect()->to('/')->with('success', 'Inscription réussie!');
     }
 
     /**
