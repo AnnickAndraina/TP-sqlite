@@ -27,3 +27,30 @@ $routes->get('/reservation/slot-details/(:num)', 'ReservationController::slotDet
 $routes->get('/home', 'Home::home');
 $routes->get('/stats', 'Home::stats');
 $routes->get('/add-food', 'Home::addFood');
+
+// ============ ROUTES ADMINISTRATEUR ============
+$routes->group('admin', function(RouteCollection $routes) {
+    // Dashboard
+    $routes->get('/', 'AdminController::dashboard');
+    $routes->get('dashboard', 'AdminController::dashboard');
+
+    // Gestion des creneaux
+    $routes->get('creneaux', 'AdminController::listCreneaux');
+    $routes->get('creneaux/create', 'AdminController::createCreneauForm');
+    $routes->post('creneaux/store', 'AdminController::storeCreneauForm');
+    $routes->get('creneaux/(:num)/edit', 'AdminController::editCreneauForm/$1');
+    $routes->post('creneaux/(:num)/update', 'AdminController::updateCreneauForm/$1');
+    $routes->post('creneaux/(:num)/delete', 'AdminController::deleteCreneauForm/$1');
+
+    // Gestion des réservations
+    $routes->get('reservations', 'AdminController::listReservations');
+    $routes->post('reservations/(:num)/status', 'AdminController::changeReservationStatus/$1');
+
+    // Gestion des ressources
+    $routes->get('ressources', 'AdminController::listRessources');
+    $routes->get('ressources/create', 'AdminController::createRessourceForm');
+    $routes->post('ressources/store', 'AdminController::storeRessource');
+
+    // Gestion des utilisateurs
+    $routes->get('users', 'AdminController::listUsers');
+});

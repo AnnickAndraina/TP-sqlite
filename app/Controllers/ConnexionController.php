@@ -30,8 +30,9 @@ class ConnexionController extends BaseController
 
         // Données de test - utilisateur TEST
         $testUsers = [
-            ['id' => 1, 'email' => 'user@test.com', 'name' => 'Test User', 'password' => 'password123'],
-            ['id' => 2, 'email' => 'demo@example.com', 'name' => 'Demo User', 'password' => 'demo123']
+            ['id' => 1, 'email' => 'user@test.com', 'name' => 'Test User', 'password' => 'password123', 'role' => 'user'],
+            ['id' => 2, 'email' => 'demo@example.com', 'name' => 'Demo User', 'password' => 'demo123', 'role' => 'user'],
+            ['id' => 99, 'email' => 'admin@foodswipe.com', 'name' => 'Admin FoodSwipe', 'password' => 'admin123', 'role' => 'admin'],
         ];
 
         $user = null;
@@ -48,8 +49,14 @@ class ConnexionController extends BaseController
                 'user_id' => $user['id'],
                 'email' => $user['email'],
                 'name' => $user['name'],
+                'role' => $user['role'],
                 'logged_in' => true
             ]);
+
+            // Rediriger l'admin vers le dashboard
+            if ($user['role'] === 'admin') {
+                return redirect()->to('/admin');
+            }
 
             return redirect()->to('/');
         }
