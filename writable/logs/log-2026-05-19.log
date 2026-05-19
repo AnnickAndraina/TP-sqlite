@@ -319,3 +319,21 @@ in APPPATH/Views/reservations/available_slots.php on line 73.
  9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:24:13 --> TypeError: App\Controllers\AdminController::listCreneaux(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: admin/creneaux]
+in APPPATH/Controllers/AdminController.php on line 52.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AdminController->listCreneaux()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:24:24 --> TypeError: App\Controllers\AdminController::listCreneaux(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: admin/creneaux]
+in APPPATH/Controllers/AdminController.php on line 52.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AdminController->listCreneaux()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
