@@ -1,0 +1,1 @@
+Projet amélioré avec calendrier interactif FullCalendar, statistiques client et graphiques admin.
