@@ -11,10 +11,9 @@ class ReservationModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['user_id', 'slot_id', 'status'];
+    protected $allowedFields = ['user_id', 'creneau_id', 'status'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
 
     /**
      * Récupère toutes les réservations d'un utilisateur

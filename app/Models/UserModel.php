@@ -11,10 +11,8 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
-    protected $allowedFields = ['email', 'password', 'name'];
-    protected $useTimestamps = true;
-    protected $createdField = 'created_at';
-    protected $updatedField = 'updated_at';
+    protected $allowedFields = ['nom', 'email', 'password', 'role'];
+    protected $useTimestamps = false;
 
     /**
      * Authentifie un utilisateur
