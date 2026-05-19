@@ -1,6 +1,41 @@
 CREATE DATABASE food_design;
 USE food_design;
 
+-- Table des utilisateurs
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    name VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Table des créneaux disponibles
+CREATE TABLE slots (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    time_start TIME NOT NULL,
+    time_end TIME NOT NULL,
+    total_places INT DEFAULT 1,
+    available_places INT DEFAULT 1,
+    status VARCHAR(50) DEFAULT 'available',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table des réservations
+CREATE TABLE reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    slot_id INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (slot_id) REFERENCES slots(id),
+    UNIQUE(user_id, slot_id)
+);
+
 CREATE TABLE plats (
     id INT PRIMARY KEY,
     name VARCHAR(255),

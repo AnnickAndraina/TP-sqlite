@@ -34,3 +34,6 @@ CREATE TABLE reservations (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (creneau_id) REFERENCES creneaux(id)
 );
+
+
+cd /opt/lampp/htdocs/SEMESTRE4/TP-sqlite && php -S localhost:8080 -t public
