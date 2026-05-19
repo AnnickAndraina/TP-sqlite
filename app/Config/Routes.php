@@ -15,6 +15,8 @@ $routes->post('/connexion/do-login', 'ConnexionController::doLogin');
 $routes->get('/inscription', 'ConnexionController::register');
 $routes->post('/connexion/do-register', 'ConnexionController::doRegister');
 $routes->get('/connexion/logout', 'ConnexionController::logout');
+$routes->get('/connexion/profile', 'ConnexionController::profile');
+$routes->post('/connexion/update-profile', 'ConnexionController::updateProfile');
 
 // Routes des réservations
 $routes->get('/reservation/available-slots', 'ReservationController::availableSlots');

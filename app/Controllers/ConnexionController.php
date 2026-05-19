@@ -113,4 +113,71 @@ class ConnexionController extends BaseController
 
         return redirect()->to('/');
     }
+
+    /**
+     * Affiche le profil utilisateur
+     */
+    public function profile()
+    {
+        $session = session();
+        $userId = $session->get('user_id');
+
+        if (!$userId) {
+            return redirect()->to('/login');
+        }
+
+        $user = [
+            'id' => $userId,
+            'name' => $session->get('name'),
+            'email' => $session->get('email'),
+            'created_at' => '2026-05-01'
+        ];
+
+        return view('profile', ['user' => $user]);
+    }
+
+    /**
+     * Met à jour le profil utilisateur
+     */
+    public function updateProfile()
+    {
+        $session = session();
+        $userId = $session->get('user_id');
+
+        if (!$userId) {
+            return redirect()->to('/login');
+        }
+
+        $name = $this->request->getPost('name');
+        $password = $this->request->getPost('password');
+        $password_confirm = $this->request->getPost('password_confirm');
+
+        // Validation
+        $errors = [];
+
+        if (empty($name)) {
+            $errors[] = 'Le nom est requis';
+        }
+
+        if (!empty($password)) {
+            if ($password !== $password_confirm) {
+                $errors[] = 'Les mots de passe ne correspondent pas';
+            }
+            if (strlen($password) < 6) {
+                $errors[] = 'Le mot de passe doit contenir au moins 6 caractères';
+            }
+        }
+
+        if (!empty($errors)) {
+            return redirect()->back()->with('errors', $errors);
+        }
+
+        // Mettre à jour la session
+        $session->set([
+            'name' => $name
+        ]);
+
+        return redirect()->to('/connexion/profile')->with('success', 'Profil mis à jour avec succès!');
+    }
 }
+

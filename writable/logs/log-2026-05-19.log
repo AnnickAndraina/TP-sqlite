@@ -337,3 +337,39 @@ in APPPATH/Controllers/AdminController.php on line 52.
  4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
  6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:32:49 --> TypeError: App\Controllers\ReservationController::myReservations(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: reservation/my-reservations]
+in APPPATH/Controllers/ReservationController.php on line 64.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ReservationController->myReservations()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:32:56 --> TypeError: App\Controllers\ReservationController::myReservations(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: reservation/my-reservations]
+in APPPATH/Controllers/ReservationController.php on line 64.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ReservationController->myReservations()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:33:08 --> TypeError: App\Controllers\ReservationController::myReservations(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: reservation/my-reservations]
+in APPPATH/Controllers/ReservationController.php on line 64.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ReservationController->myReservations()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-05-19 11:33:12 --> TypeError: App\Controllers\ReservationController::myReservations(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: reservation/my-reservations]
+in APPPATH/Controllers/ReservationController.php on line 64.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ReservationController->myReservations()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
